@@ -24,7 +24,8 @@ ggplot(data = crabs, aes(x = Latitude, y = carapace_width)) +
     x = "latitude",
     y = "carapace width (mm)",
     title = "Fiddler Crab Carapace Width Verus Latitude"
-  )
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
@@ -43,12 +44,28 @@ crabs_1 <- crabs %>%
 
 
 crabs_1 %>% 
-  kable(col.names = c("site", "Mean Carapace", "Standard Deviation Carapace", 
+  kable(col.names = c("Site", "Mean Carapace", "Standard Deviation Carapace", 
                       "Sample Size")) %>% 
   kable_paper(full_width = FALSE)
 ```
 
 
+```{r, "As the mean annual water temperature increases, the carapace width decreases."}
+ggplot(data = crabs, aes(x = MATW, y = carapace_width)) +
+  geom_point() +
+  labs(
+    x = "Mean Annual Water Temperature (Celcius)",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Carapace Width Versus Mean Annual Water Temperature"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+
+
+```
+
+#### Fiddler crab carapace width versus mean annual water temperature. 
 
 
 
