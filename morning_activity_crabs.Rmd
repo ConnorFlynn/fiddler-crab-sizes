@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 library(tidyverse)
 library(here)
 
@@ -14,4 +14,33 @@ library(here)
 ```{r}
 crabs <- read_csv(here("data", "HTL-MAR-FiddlerCrabBodySize.csv"))
 ```
+
+#ggplot 
+```{r, "There is a positive linear correlation between latitude and fiddler crab carapace width."}
+ggplot(data = crabs, aes(x = Latitude, y = carapace_width)) +
+  geom_point()+
+  labs(
+    x = "latitude",
+    y = "carapace width (mm)",
+    title = "Fiddler Crab Carapace Width Verus Latitude"
+  )
+```
+
+
+
+##### Fiddler crab carapace width (mm) verus latitude from July to August, 2016. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
