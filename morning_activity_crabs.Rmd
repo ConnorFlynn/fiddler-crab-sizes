@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 library(tidyverse)
 library(here)
+library(kableExtra)
 
 ```
 ```{r}
@@ -31,7 +32,21 @@ ggplot(data = crabs, aes(x = Latitude, y = carapace_width)) +
 ##### Fiddler crab carapace width (mm) verus latitude from July to August, 2016. 
 
 
+```{r}
+crabs_1 <- crabs %>% 
+  group_by(Site) %>% 
+  summarise(
+    mean_carapace = round(mean(carapace_width), 2),
+    sd_carapace = round(sd(carapace_width), 2),
+    sample_size = n()
+  )
 
+
+crabs_1 %>% 
+  kable(col.names = c("site", "Mean Carapace", "Standard Deviation Carapace", 
+                      "Sample Size")) %>% 
+  kable_paper(full_width = FALSE)
+```
 
 
 
